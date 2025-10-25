@@ -20,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 24.0,
             children: <Widget>[
               FormTitle(title: 'Log into', subTitle: 'your account'),
               Padding(
@@ -28,34 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     LoginForm(),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Forgot password?',
-                          style: TextStyle(fontSize: 12.0),
-                        ),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 16.0,
-                          horizontal: 32.0,
-                        ),
-                        backgroundColor: Color(0xFF2D201C),
-                      ),
-                      child: Text(
-                        'Log in',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ),
                     SizedBox(height: 20.0),
                     Text(
                       'or log in with',
@@ -64,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.grey.shade400,
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 24.0),
                     SocialLogin(),
                   ],
                 ),

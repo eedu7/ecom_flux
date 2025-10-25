@@ -1,3 +1,4 @@
+import 'package:ecom_flux/features/auth/api/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -15,6 +16,8 @@ class _LoginFormState extends State<LoginForm> {
   bool _isPasswordVisible = false;
   bool _isLoading = false;
 
+  final AuthService _authService = AuthService();
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -27,10 +30,23 @@ class _LoginFormState extends State<LoginForm> {
 
     setState(() => _isLoading = true);
 
-    // Call the Login Api
-    await Future.delayed(const Duration(seconds: 2));
+    final result = await _authService.login(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
 
     setState(() => _isLoading = false);
+
+    if (result['success']) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(result['message'])));
+      // TODO: Send to home page
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(result['message'])));
+    }
   }
 
   @override
@@ -79,6 +95,35 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: () {},
+              child: Text('Forgot password?', style: TextStyle(fontSize: 12.0)),
+            ),
+          ),
+          _isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Center(
+                  child: ElevatedButton(
+                    onPressed: _handleLogin,
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 16.0,
+                        horizontal: 32.0,
+                      ),
+                      backgroundColor: Color(0xFF2D201C),
+                    ),
+                    child: Text(
+                      'Log in',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                ),
         ],
       ),
     );
