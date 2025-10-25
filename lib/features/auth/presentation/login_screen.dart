@@ -2,6 +2,7 @@ import 'package:ecom_flux/features/auth/widgets/form_title.dart';
 import 'package:ecom_flux/features/auth/widgets/login_form.dart';
 import 'package:ecom_flux/features/auth/widgets/social_login.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -52,7 +53,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                    onPressed: () {},
+                    onPressed: () {
+                      print('Action');
+                      context.goNamed('signup');
+                    },
                     child: Text(
                       'Sign Up',
                       style: TextStyle(

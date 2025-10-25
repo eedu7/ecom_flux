@@ -1,5 +1,6 @@
 import 'package:ecom_flux/features/auth/api/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -98,7 +99,9 @@ class _LoginFormState extends State<LoginForm> {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed('forgotPassword');
+              },
               child: Text('Forgot password?', style: TextStyle(fontSize: 12.0)),
             ),
           ),

@@ -8,14 +8,17 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/auth/login',
+      name: 'login',
       builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(
       path: '/auth/signup',
+      name: 'signup',
       builder: (context, state) => const SignupScreen(),
     ),
     GoRoute(
       path: '/auth/forgot-password',
+      name: 'forgotPassword',
       builder: (context, state) => const ForgotPasswordScreen(),
     ),
   ],
