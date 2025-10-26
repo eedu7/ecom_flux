@@ -17,58 +17,56 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 24.0,
-            children: <Widget>[
-              FormTitle(title: 'Log into', subTitle: 'your account'),
-              Padding(
-                padding: const EdgeInsets.all(14.0),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 20),
-                    LoginForm(),
-                    SizedBox(height: 20.0),
-                    Text(
-                      'or log in with',
-                      style: TextStyle(
-                        fontSize: 12.0,
-                        color: Colors.grey.shade400,
-                      ),
-                    ),
-                    SizedBox(height: 24.0),
-                    SocialLogin(),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 24.0,
+          children: <Widget>[
+            FormTitle(title: 'Log into', subTitle: 'your account'),
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Column(
                 children: <Widget>[
+                  SizedBox(height: 20),
+                  LoginForm(),
+                  SizedBox(height: 20.0),
                   Text(
-                    'Don\'t have an account?',
-                    style: TextStyle(fontSize: 14.0),
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                    onPressed: () {
-                      print('Action');
-                      context.goNamed('signup');
-                    },
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        decoration: TextDecoration.underline,
-                      ),
+                    'or log in with',
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      color: Colors.grey.shade400,
                     ),
                   ),
+                  SizedBox(height: 24.0),
+                  SocialLogin(),
                 ],
               ),
-            ],
-          ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Don\'t have an account?',
+                  style: TextStyle(fontSize: 14.0),
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
+                  onPressed: () {
+                    print('Action');
+                    context.goNamed('signup');
+                  },
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
