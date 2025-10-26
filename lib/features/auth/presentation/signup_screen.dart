@@ -33,7 +33,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       'or signup in with',
                       style: TextStyle(
                         fontSize: 12.0,
-                        color: Colors.grey.shade400,
+                        color: Colors.grey.shade600,
                       ),
                     ),
                     SizedBox(height: 24.0),
