@@ -1,5 +1,6 @@
 import 'package:ecom_flux/features/auth/api/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -26,11 +27,11 @@ class _SignupFormState extends State<SignupForm> {
 
   final AuthService _authService = AuthService();
 
-  void _handleSignup() async {
+  Future<void> _handleSignup() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _isLoading = true);
 
-    final result = await _authService.signUp(
+    final response = await _authService.signUp(
       firstName: _firstNameController.text.trim(),
       lastName: _lastNameController.text.trim(),
       email: _emailController.text.trim(),
@@ -40,6 +41,24 @@ class _SignupFormState extends State<SignupForm> {
     );
 
     setState(() => _isLoading = false);
+
+    if (response['success']) {
+      context.goNamed('home');
+    } else {
+      ScaffoldMessenger.of(context).showMaterialBanner(
+        MaterialBanner(
+          content: Text(response['message']),
+          leading: const Icon(Icons.cancel, color: Colors.red),
+          actions: [
+            TextButton(
+              onPressed: () =>
+                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+              child: const Text('DISMISS'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   @override

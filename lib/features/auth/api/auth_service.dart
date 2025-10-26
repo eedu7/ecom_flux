@@ -75,7 +75,7 @@ class AuthService {
     } catch (e) {
       return {
         'success': false,
-        'message': 'Falied to send reset link',
+        'message': 'Failed to send reset link',
         'errorMessage': e,
       };
     }

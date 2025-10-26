@@ -1,10 +1,11 @@
 import 'package:ecom_flux/features/auth/presentation/forgot_password_screen.dart';
 import 'package:ecom_flux/features/auth/presentation/login_screen.dart';
 import 'package:ecom_flux/features/auth/presentation/signup_screen.dart';
+import 'package:ecom_flux/features/products/presentation/product_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: '/auth/signup',
+  initialLocation: '/auth/login',
   routes: [
     GoRoute(
       path: '/auth/login',
@@ -20,6 +21,11 @@ final router = GoRouter(
       path: '/auth/forgot-password',
       name: 'forgotPassword',
       builder: (context, state) => const ForgotPasswordScreen(),
+    ),
+    GoRoute(
+      path: '/',
+      name: 'home',
+      builder: (context, state) => const ProductScreen(),
     ),
   ],
 );

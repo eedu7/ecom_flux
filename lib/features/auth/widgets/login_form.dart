@@ -31,28 +31,34 @@ class _LoginFormState extends State<LoginForm> {
 
     setState(() => _isLoading = true);
 
-    final result = await _authService.login(
+    final response = await _authService.login(
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
     );
 
     setState(() => _isLoading = false);
 
-    if (result['success']) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(result['message'])));
-      // TODO: Send to home page
+    if (response['success']) {
+      context.goNamed('home');
     } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(result['message'])));
+      ScaffoldMessenger.of(context).showMaterialBanner(
+        MaterialBanner(
+          content: Text(response['message']),
+          leading: const Icon(Icons.cancel, color: Colors.red),
+          actions: [
+            TextButton(
+              onPressed: () =>
+                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+              child: const Text('DISMISS'),
+            ),
+          ],
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Form(
       key: _formKey,
       child: Column(
@@ -66,7 +72,6 @@ class _LoginFormState extends State<LoginForm> {
             decoration: InputDecoration(
               labelText: 'Email',
               hintText: 'Enter your email',
-              prefixIcon: const Icon(Icons.email_outlined),
               border: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.blue, width: 2.0),
               ),
@@ -80,7 +85,6 @@ class _LoginFormState extends State<LoginForm> {
             decoration: InputDecoration(
               labelText: 'Password',
               hintText: '********',
-              prefixIcon: const Icon(Icons.lock),
               suffixIcon: IconButton(
                 onPressed: () {
                   setState(() {

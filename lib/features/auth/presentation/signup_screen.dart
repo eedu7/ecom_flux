@@ -16,8 +16,8 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 24.0,
