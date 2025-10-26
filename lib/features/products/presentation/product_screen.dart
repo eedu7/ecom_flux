@@ -1,3 +1,4 @@
+import 'package:ecom_flux/features/products/widgets/collection_card.dart';
 import 'package:ecom_flux/features/products/widgets/product_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -36,7 +37,11 @@ class _ProductScreenState extends State<ProductScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(children: <Widget>[ProductCategories()]),
+
+        child: Column(
+          spacing: 24.0,
+          children: <Widget>[ProductCategories(), CollectionCard()],
+        ),
       ),
     );
   }
