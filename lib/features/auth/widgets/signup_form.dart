@@ -67,6 +67,7 @@ class _SignupFormState extends State<SignupForm> {
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 12.0,
         children: <Widget>[
           TextFormField(
             controller: _firstNameController,

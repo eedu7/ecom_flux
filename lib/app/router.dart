@@ -5,7 +5,7 @@ import 'package:ecom_flux/features/products/presentation/product_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: '/auth/login',
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/auth/login',
