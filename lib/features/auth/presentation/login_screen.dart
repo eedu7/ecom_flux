@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 24.0,
           children: <Widget>[
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: <Widget>[
                   SizedBox(height: 20),
                   LoginForm(),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 24.0),
                   Text(
                     'or log in with',
                     style: TextStyle(
