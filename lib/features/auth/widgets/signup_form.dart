@@ -1,3 +1,4 @@
+import 'package:ecom_flux/features/auth/api/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class SignupForm extends StatefulWidget {
@@ -10,12 +11,36 @@ class SignupForm extends StatefulWidget {
 class _SignupFormState extends State<SignupForm> {
   final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
   bool _isPasswordVisible = false;
   bool _isLoading = false;
 
-  String? _selectedGender = 'Male';
+  String _selectedGender = 'male';
 
-  void _handleSignup() async {}
+  final AuthService _authService = AuthService();
+
+  void _handleSignup() async {
+    if (!_formKey.currentState!.validate()) return;
+    setState(() => _isLoading = true);
+
+    final result = await _authService.signUp(
+      firstName: _firstNameController.text.trim(),
+      lastName: _lastNameController.text.trim(),
+      email: _emailController.text.trim(),
+      phone: _phoneController.text.trim(),
+      gender: _selectedGender,
+      password: _passwordController.text.trim(),
+    );
+
+    setState(() => _isLoading = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +50,8 @@ class _SignupFormState extends State<SignupForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextFormField(
-            keyboardType: TextInputType.emailAddress,
+            controller: _firstNameController,
+            keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             decoration: InputDecoration(
               labelText: 'First Name',
@@ -36,7 +62,8 @@ class _SignupFormState extends State<SignupForm> {
             ),
           ),
           TextFormField(
-            keyboardType: TextInputType.emailAddress,
+            controller: _lastNameController,
+            keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             decoration: InputDecoration(
               labelText: 'Last Name',
@@ -47,6 +74,7 @@ class _SignupFormState extends State<SignupForm> {
             ),
           ),
           TextFormField(
+            controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             decoration: InputDecoration(
@@ -58,7 +86,8 @@ class _SignupFormState extends State<SignupForm> {
             ),
           ),
           TextFormField(
-            keyboardType: TextInputType.emailAddress,
+            controller: _phoneController,
+            keyboardType: TextInputType.phone,
             textInputAction: TextInputAction.next,
             decoration: InputDecoration(
               labelText: 'Phone Number',
@@ -77,16 +106,16 @@ class _SignupFormState extends State<SignupForm> {
                 groupValue: _selectedGender,
                 onChanged: (String? value) {
                   setState(() {
-                    _selectedGender = value;
+                    _selectedGender = value!;
                   });
                 },
                 child: Row(
                   children: <Widget>[
-                    Radio<String>(value: 'Male'),
+                    Radio<String>(value: 'male'),
                     Text('Male'),
-                    Radio<String>(value: 'Female'),
+                    Radio<String>(value: 'female'),
                     Text('Female'),
-                    Radio<String>(value: 'Other'),
+                    Radio<String>(value: 'other'),
                     Text('Other'),
                   ],
                 ),
@@ -94,6 +123,7 @@ class _SignupFormState extends State<SignupForm> {
             ],
           ),
           TextFormField(
+            controller: _passwordController,
             keyboardType: TextInputType.visiblePassword,
             textInputAction: TextInputAction.next,
             obscureText: !_isPasswordVisible,
@@ -116,6 +146,7 @@ class _SignupFormState extends State<SignupForm> {
             ),
           ),
           TextFormField(
+            controller: _confirmPasswordController,
             keyboardType: TextInputType.visiblePassword,
             textInputAction: TextInputAction.next,
             obscureText: !_isPasswordVisible,
