@@ -31,19 +31,22 @@ class ProductService {
       Product(
         id: '1',
         title: 'Turtleneck Sweater',
-        image: "/assets/images/features/image_1.png",
+        image:
+            "https://images.unsplash.com/photo-1580331451062-99ff652288d7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
         price: 39.99,
       ),
       Product(
         id: '2',
         title: 'Long Sleeve Dress',
-        image: '/assets/images/features/image_2.png',
+        image:
+            'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bG9uZyUyMGRyZXNzfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500',
         price: 45.0,
       ),
       Product(
         id: '3',
         title: 'Sportswear Set',
-        image: 'assets/images/features/image_3.png',
+        image:
+            'https://images.unsplash.com/photo-1742210591800-7705b53b29e7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTV8fHNwb3J0c3dlYXIlMjB3b21lbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500',
         price: 80.0,
       ),
     ];
