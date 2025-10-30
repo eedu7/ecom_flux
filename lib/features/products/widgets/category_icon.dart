@@ -18,11 +18,14 @@ class _CategoryIconState extends State<CategoryIcon> {
       onPressed: () {
         // Todo: Categories
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 8.0,
-        children: [FaIcon(widget.icon), Text(widget.title)],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 8.0,
+          children: [FaIcon(widget.icon), Text(widget.title)],
+        ),
       ),
     );
   }
